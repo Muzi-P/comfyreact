@@ -1,10 +1,17 @@
 import React from 'react';
 import './App.css';
+import Navbar from './components/Navbar'
+import Cart from './components/Cart'
+import Hero from './components/Hero'
+import Products from './components/Products'
 
 function App() {
   return (
     <div className="App">
-      <h1>Hello from parent</h1>
+      <Navbar/>
+      <Cart/>
+      <Hero/>
+      <Products/>
     </div>
   );
 }
