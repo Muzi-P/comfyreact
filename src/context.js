@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import items from './products'
+import inflows from './sample'
 import storageHelper from './Utils/storageHelper'
-const ProductContext = React.createContext();
+import axios from 'axios'
 
+const ProductContext = React.createContext();
 class ProductProvider extends Component {
     constructor(props) {
         super()
@@ -11,7 +13,8 @@ class ProductProvider extends Component {
             cart: storageHelper.getItem.local('cart'),
             tempTotal: 0,
             itemsTotal: 0,
-            showCart: false
+            showCart: false,
+            inflows: []
         }
     }
 
@@ -22,7 +25,23 @@ class ProductProvider extends Component {
         this.setState({
             products,
         })
-        this.setCartValue(this.state.cart)
+        this.setCartValue(this.state.cart);
+
+        // inflows.map(inflow => {
+        //     const { Day_of_Input, GS_2, Ferreira, Luphohlo_Daily_Level, Mkinkomo_Rervoir_Daily_Level } = inflow
+        //     axios.post('http://127.0.0.1:8000/inflows/', {
+        //         Day_of_Input, 
+        //         GS_2, 
+        //         Ferreira, 
+        //         Luphohlo_Daily_Level, 
+        //         Mkinkomo_Rervoir_Daily_Level 
+        //     }).then(res => console.log(res.data))
+        // })
+        
+
+        // this.setState({
+        //     inflows,
+        // })
     }
 
     formatData = (items) => {
@@ -76,7 +95,7 @@ class ProductProvider extends Component {
         if (this.state.showCart) {
             this.setState({ showCart: false })
         } else {
-            this.setState({showCart: true})
+            this.setState({ showCart: true })
         }
     }
     render() {
